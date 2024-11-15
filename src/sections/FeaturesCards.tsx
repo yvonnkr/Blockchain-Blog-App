@@ -1,4 +1,5 @@
 import {twMerge} from "tailwind-merge";
+import {TextButton} from "../components/TextButton.tsx";
 
 const cardData = [
     {
@@ -77,16 +78,9 @@ export const FeaturesCardsSection = () => {
                                         {description}
                                     </p>
                                     <div className="flex justify-between mt-12">
-                                        <button
-                                            className={twMerge(
-                                                "text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500",
-                                                color === "lime" && "text-lime-500",
-                                                color === "cyan" && "text-cyan-500",
-                                                color === "violet" && "text-violet-500",
-                                            )}
-                                        >
+                                        <TextButton color={color} >
                                             Learn More
-                                        </button>
+                                        </TextButton>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              fill="none"
                                              viewBox="0 0 24 24"

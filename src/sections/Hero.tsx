@@ -16,7 +16,7 @@ export const HeroSection = () => {
                     Blockforge is pioneering smart contract integrity with cutting-edge data solutions.
                 </p>
                 <div className="flex justify-center mt-10">
-                    <CutCornerButton className="">
+                    <CutCornerButton className="z-10">
                         Get Started
                     </CutCornerButton>
                 </div>
