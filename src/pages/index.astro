@@ -4,6 +4,16 @@ import {HeaderSection} from "../sections/Header";
 import {HeroSection} from "../sections/Hero";
 import {FeaturesCardsSection} from "../sections/FeaturesCards";
 import {FeaturesGridSection} from "../sections/FeaturesGrid";
+import {LatestPostsSection} from "../sections/LatestPosts";
+import {getCollection} from 'astro:content';
+
+const posts = await getCollection('blog');
+
+//GET 4 latest posts sorted bt pubDate defined in schema
+const latestPosts = posts.sort((a, b) => {
+    if (a.data.pubDate.valueOf() === b.data.pubDate.valueOf()) return 0;
+    return a.data.pubDate.valueOf() > b.data.pubDate.valueOf() ? -1 : 1;
+}).slice(0, 4)
 ---
 
 <DefaultLayout>
@@ -11,4 +21,5 @@ import {FeaturesGridSection} from "../sections/FeaturesGrid";
     <HeroSection/>
     <FeaturesCardsSection/>
     <FeaturesGridSection/>
+    <LatestPostsSection latestPosts={latestPosts}/>
 </DefaultLayout>
