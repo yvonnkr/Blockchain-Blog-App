@@ -8,6 +8,7 @@ import {LatestPostsSection} from "../sections/LatestPosts";
 import {TestimonialsSection} from "../sections/TestimonialsSection";
 import {CallToAction} from "../sections/CallToAction";
 import {getCollection} from 'astro:content';
+import {Footer} from "../sections/Footer"
 
 const posts = await getCollection('blog');
 
@@ -26,4 +27,5 @@ const latestPosts = posts.sort((a, b) => {
     <LatestPostsSection latestPosts={latestPosts}/>
     <TestimonialsSection/>
     <CallToAction/>
+    <Footer/>
 </DefaultLayout>
