@@ -21,7 +21,7 @@ const latestPosts = posts.sort((a, b) => {
 
 <DefaultLayout>
     <HeaderSection/>
-    <HeroSection/>
+    <HeroSection client:load />
     <FeaturesCardsSection/>
     <FeaturesGridSection/>
     <LatestPostsSection latestPosts={latestPosts}/>
