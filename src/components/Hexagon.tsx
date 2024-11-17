@@ -1,5 +1,5 @@
 import {twMerge} from "tailwind-merge";
-import {type ComponentPropsWithoutRef, useLayoutEffect, useRef, useState} from "react";
+import {type ComponentPropsWithoutRef, useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
 
 export const Hexagon = (
@@ -10,8 +10,9 @@ export const Hexagon = (
     const [totalPathLength, setTotalPathLength] = useState<number>();
 
 
-    // Runs synchronously after the DOM updates but before the browser repaints.
-    useLayoutEffect(() => {
+    // useLayoutEffect - Was throwing ssr error -> Runs synchronously after the DOM updates but before the browser repaints.
+    // useLayoutEffect(() => {
+    useEffect(() => {
         const pathLength = pathRef.current?.getTotalLength();
         if (!pathLength) return;
         const scaledPathLength = pathLength * size / 82;
