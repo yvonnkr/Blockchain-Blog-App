@@ -16,7 +16,7 @@ export const CallToAction = () => {
                         <Hexagon className="size-[1100px]"/>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Circle className="absolute left-0 -top-[400px]">
+                        <Circle className="absolute left-0 -top-[400px]" >
                             <img src="/assets/images/cuboid.png"
                                  alt="Cuboid 3d image"
                                  className="size-[140px]"
