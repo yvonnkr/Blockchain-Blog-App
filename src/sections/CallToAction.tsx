@@ -1,33 +1,52 @@
 import {CutCornerButton} from "../components/CutCornerButton.tsx";
 import {Hexagon} from "../components/Hexagon.tsx";
 import {Circle} from "../components/Circle.tsx";
+import {useRef} from "react";
+import {motion, useScroll, useTransform} from "framer-motion";
 
 export const CallToAction = () => {
+
+    const sectionRef = useRef(null);
+
+    const {scrollYProgress} = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    })
+
+    const rotate = useTransform(scrollYProgress, [0, 1], [45, -45]);
+
+
     return (
-        <section className="py-60 overflow-hidden">
+        <section className="py-60 overflow-hidden" ref={sectionRef}>
             <div className="container">
 
                 <div className="relative">
                     {/* background-start*/}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Hexagon className="size-[700px]"/>
+                        <Hexagon size={700}/>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Hexagon className="size-[1100px]"/>
+                        <Hexagon size={1100} reverse={true} duration={50}/>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Circle className="absolute left-0 -top-[400px]" >
-                            <img src="/assets/images/cuboid.png"
-                                 alt="Cuboid 3d image"
-                                 className="size-[140px]"
+                        <Circle className="absolute left-0 -top-[400px]" animate={true}>
+                            <motion.img src="/assets/images/cuboid.png"
+                                        alt="Cuboid 3d image"
+                                        className="size-[140px]"
+                                        style={{
+                                            rotate: rotate,
+                                        }}
                             />
                         </Circle>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Circle className="absolute -left-[600px] -top-[70px]">
-                            <img src="/assets/images/cylinder.png"
-                                 alt="Cylinder 3d image"
-                                 className="size-[140px]"
+                        <Circle className="absolute -left-[600px] -top-[70px]" animate={true}>
+                            <motion.img src="/assets/images/cylinder.png"
+                                        alt="Cylinder 3d image"
+                                        className="size-[140px]"
+                                        style={{
+                                            rotate: rotate,
+                                        }}
                             />
                         </Circle>
                     </div>
