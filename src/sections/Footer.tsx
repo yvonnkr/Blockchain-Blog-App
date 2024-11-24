@@ -51,8 +51,8 @@ export const Footer = () => {
                         <img src="/assets/images/logo.svg" alt="Blockforge logo"/>
                     </div>
                     <nav className="hidden md:flex text-zinc-500 font-heading font-black gap-12">
-                        <a href="#">Home</a>
-                        <a href="#">Blog</a>
+                        <a href="/">Home</a>
+                        <a href="/blog">Blog</a>
                         <a href="#">Careers</a>
                         <a href="#">Contact</a>
                     </nav>
