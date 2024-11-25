@@ -51,7 +51,7 @@ export const HeroSection = () => {
                 </p>
                 <div className="flex justify-center mt-10">
                     <CutCornerButton className="z-10">
-                        Get Started
+                        Scroll to Learn More
                     </CutCornerButton>
                 </div>
 
