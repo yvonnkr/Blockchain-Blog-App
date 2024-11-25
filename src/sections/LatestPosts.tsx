@@ -1,17 +1,17 @@
-import {Card} from "../components/Card.tsx";
-import type {CollectionEntry} from "astro:content";
-import {getPostColorFromCategory} from "../utils/postUtils.ts";
-import {Tag} from "../components/Tag.tsx";
-import {CutCornerButton} from "../components/CutCornerButton.tsx";
-import {twMerge} from "tailwind-merge";
-import {motion, useScroll, useTransform} from "framer-motion";
-import {useRef} from "react";
+import { Card }                            from "../components/Card.tsx";
+import type { CollectionEntry }            from "astro:content";
+import { getPostColorFromCategory }        from "../utils/postUtils.ts";
+import { Tag }                             from "../components/Tag.tsx";
+import { CutCornerButton }                 from "../components/CutCornerButton.tsx";
+import { twMerge }                         from "tailwind-merge";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef }                          from "react";
 
 export const LatestPostsSection = (props: { latestPosts: CollectionEntry<"blog">[] }) => {
-    const {latestPosts} = props;
+    const { latestPosts } = props;
     const targetRef = useRef(null);
 
-    const {scrollYProgress} = useScroll({
+    const { scrollYProgress } = useScroll({
         target: targetRef,
         offset: ["start end", "start center"],
     });
@@ -33,13 +33,13 @@ export const LatestPostsSection = (props: { latestPosts: CollectionEntry<"blog">
                 <div className="mt-16 md:mt-28 grid grid-cols-1 md:grid-cols-2 gap-8">
 
                     <div className="flex flex-col gap-8">
-                        {latestPosts.map(({data: {title, description, category}}, postIndex) => (
+                        {latestPosts.map(({ data: { title, description, category } }, postIndex) => (
                             <Card
                                 key={postIndex}
                                 buttonText="Read More"
                                 color={getPostColorFromCategory(category)}
                                 className={twMerge(
-                                    (postIndex % 2 >= 1) && "md:hidden"
+                                    (postIndex % 2 >= 1) && "md:hidden",
                                 )}
                             >
                                 <Tag color={getPostColorFromCategory(category)}>
@@ -60,16 +60,16 @@ export const LatestPostsSection = (props: { latestPosts: CollectionEntry<"blog">
                         className="hidden md:flex flex-col gap-8 mt-16"
                         ref={targetRef}
                         style={{
-                            marginTop: marginTop
+                            marginTop: marginTop,
                         }}
                     >
-                        {latestPosts.map(({data: {title, description, category}}, postIndex) => (
+                        {latestPosts.map(({ data: { title, description, category } }, postIndex) => (
                             <Card
                                 key={postIndex}
                                 buttonText="Read More"
                                 color={getPostColorFromCategory(category)}
                                 className={twMerge(
-                                    (postIndex % 2 === 0) && "md:hidden"
+                                    (postIndex % 2 === 0) && "md:hidden",
                                 )}
                             >
                                 <Tag color={getPostColorFromCategory(category)}>
@@ -89,10 +89,12 @@ export const LatestPostsSection = (props: { latestPosts: CollectionEntry<"blog">
                 </div>
 
                 <div className="flex justify-center mt-48 md:mt-32">
-                    <CutCornerButton>Read The Blog</CutCornerButton>
+                    <a href="/blog">
+                        <CutCornerButton>Read The Blog</CutCornerButton>
+                    </a>
                 </div>
 
             </div>
         </section>
-    )
-}
+    );
+};
